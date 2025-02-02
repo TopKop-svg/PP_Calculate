@@ -65,4 +65,11 @@ public class CalculatorGUI extends JFrame implements ActionListener {
                 return 0;
         }
     }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            CalculatorGUI calculatorGUI = new CalculatorGUI();
+            calculatorGUI.setVisible(true);
+        });
+    }
 }
