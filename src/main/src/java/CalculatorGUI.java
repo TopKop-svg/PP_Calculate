@@ -6,6 +6,22 @@ public class CalculatorGUI extends JFrame implements ActionListener {
     private JTextField display;
     private double firstNum = 0;
     private String operator = "";
+    private boolean isOperatorClicked = false;
+
+    public CalculatorGUI() {
+        setTitle("Калькулятор");
+        setSize(300, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+
+        String[] buttons = {
+                "7", "8" , "9", "/",
+                "4", "5" , "6", "*",
+                "1", "2" , "3", "-",
+                "C", "0" , "=", "+"
+        };
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
