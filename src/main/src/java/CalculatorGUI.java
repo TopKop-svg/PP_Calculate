@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +15,13 @@ public class CalculatorGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+        display = new JTextField();
+        display.setFont(new Font("Arial", Font.PLAIN, 24));
+        display.setEditable(false);
+        add(display, BorderLayout.NORTH);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(4, 4, 10, 10));
 
         String[] buttons = {
                 "7", "8" , "9", "/",
@@ -21,6 +29,15 @@ public class CalculatorGUI extends JFrame implements ActionListener {
                 "1", "2" , "3", "-",
                 "C", "0" , "=", "+"
         };
+
+        for(String text: buttons) {
+            JButton button = new JButton(text);
+            button.setFont(new Font("Arial", Font.PLAIN, 18));
+            button.addActionListener(this);
+            buttonPanel.add(button);
+        }
+
+        add(buttonPanel, BorderLayout.CENTER);
     }
 
     @Override
