@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -57,9 +58,21 @@ public class CalculatorGUI extends JFrame implements ActionListener {
             if (!operator.isEmpty()) {
                 double secondNumber = Double.parseDouble(display.getText());
                 double result = calculate(firstNum, secondNumber, operator);
+                display.setText(String.valueOf(result));
+                operator = "";
             }
-        } else {
-
+        } else{ // Если выбрана операция
+            if (!operator.isEmpty()) {
+                //Если операция уже была выбрана, вычисляем промежуточный результат
+                double secondNumber = Double.parseDouble(display.getText());
+                double result = calculate(firstNum, secondNumber, operator);
+                display.setText(String.valueOf(result));
+                firstNum = result;
+            } else {
+                firstNum = Double.parseDouble(display.getText());
+            }
+            operator = command;
+            isOperatorClicked = true;
         }
     }
 
