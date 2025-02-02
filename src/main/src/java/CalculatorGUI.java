@@ -42,7 +42,25 @@ public class CalculatorGUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
 
+        if (command.charAt(0) >= '0' && command.charAt(0) <= '9') {
+            if (isOperatorClicked) {
+                display.setText("");
+                isOperatorClicked = false;
+            }
+            display.setText(display.getText() + command);
+        } else if (command.equals("C")) { //Очистка
+            display.setText("");
+            firstNum = 0;
+        } else if (command.equals("=")) {
+            if (!operator.isEmpty()) {
+                double secondNumber = Double.parseDouble(display.getText());
+                double result = calculate(firstNum, secondNumber, operator);
+            }
+        } else {
+
+        }
     }
 
     private double calculate(double num1, double num2, String operator) {
@@ -65,6 +83,8 @@ public class CalculatorGUI extends JFrame implements ActionListener {
                 return 0;
         }
     }
+
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
