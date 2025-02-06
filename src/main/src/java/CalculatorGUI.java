@@ -10,8 +10,8 @@ public class CalculatorGUI extends JFrame implements ActionListener {
     private String operator = "";
     private boolean isOperatorClicked = false;
 
-    private Calculator calculator = new Calculator();
-    private History history = new History();
+    private final Calculator calculator = new Calculator();
+    private final History history = new History();
 
     public CalculatorGUI() {
         setTitle("Калькулятор");
@@ -32,7 +32,7 @@ public class CalculatorGUI extends JFrame implements ActionListener {
                 "4", "5" , "6", "*",
                 "1", "2" , "3", "-",
                 "C", "0" , "=", "+",
-                "История", "", "", ""
+                "История", "Очистить историю", "", ""
         };
 
         for(String text: buttons) {
@@ -70,8 +70,9 @@ public class CalculatorGUI extends JFrame implements ActionListener {
             }
         } else if (command.equals("История")) {
             history.showHistory();
-        }
-        else{ // Если выбрана операция
+        } else if(command.equals("Очистить историю")){
+            history.cleanHistory();
+        } else{ // Если выбрана операция
             if (!operator.isEmpty()) {
                 //Если операция уже была выбрана, вычисляем промежуточный результат
                 double secondNumber = Double.parseDouble(display.getText());

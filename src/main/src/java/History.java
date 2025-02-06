@@ -24,5 +24,9 @@ public class History {
 
     public void cleanHistory() {
         history.clear();
+        JOptionPane.showMessageDialog(null,
+                "История операций очищена. ",
+                "История",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 }
